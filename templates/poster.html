@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Poster-Gallery</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='brainstorming.css') }}" type="text/css" />
+    </head>
+
+    <body>
+        <div class="gallery">
+            {% for poster in posters %}
+            <div class="gallery-entry">
+                <div class="poster">
+                    <div class="container title">
+                        <div class="box title">
+                            {{ poster.title|safe }}
+                        </div>
+                    </div>
+                    <div class="container idea">
+                        <div class="box idea">
+                            {{ poster.idea|safe }}
+                        </div>
+                    </div>
+                    <div class="container problem">
+                        <div class="box problem">
+                            {{ poster.problem|safe }}
+                        </div>
+                    </div>
+                    <div class="container data">
+                        <div class="box data">
+                            {{ poster.data|safe }}
+                        </div>
+                    </div>
+                    <div class="container missing">
+                        <div class="box missing">
+                            {{ poster.missing|safe }}
+                        </div>
+                    </div>
+                    <div class="container people">
+                        <div class="box people">
+                            {{ poster.people|safe }}
+                        </div>
+                    </div>
+                    <div class="container arrowright">
+                        <div class="box arrowright"></div>
+                    </div>
+                    <div class="container arrowdown">
+                        <div class="box arrowdown"></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </body>
+
+</html>
