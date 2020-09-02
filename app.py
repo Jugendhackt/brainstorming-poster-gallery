@@ -3,9 +3,9 @@
 
 import dataclasses
 import pathlib
+import urllib.request
 
 import commonmark
-import requests
 from flask import Flask, request, abort, render_template
 
 app = Flask("Brainstorming")
@@ -44,10 +44,16 @@ def download_poster(url):
         url = f"https://{url}/download"
     else:
         url = f"{url}/download"
-    r = requests.get(url)
-    if r.status_code != 200:
+    r = urllib.request.urlopen(url)
+    if r.status != 200:
         abort(404)
-    return r.text
+    ct_header = r.getheader("content-type", "text/markdown; charset=utf-8")
+    if ";" in ct_header:
+        content_type, charset_def = ct_header.split(";", 1)
+    else:
+        content_type, charset_def = ct_header, "charset=utf-8"
+    _, charset = charset_def.split("=", 1)
+    return r.read().decode(charset)
 
 
 @app.route("/poster/<path:url>")
