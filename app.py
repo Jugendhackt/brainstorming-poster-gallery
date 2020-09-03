@@ -19,6 +19,7 @@ class PosterData:
     data: str
     missing: str
     people: str
+    url: str
 
 
 def process_markdown(text):
@@ -74,6 +75,7 @@ def poster(url):
                 "".join(data),
                 "".join(missing),
                 "".join(people),
+                url,
             )
         )
     return render_template("poster.html", posters=posters)
