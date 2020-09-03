@@ -1,0 +1,14 @@
+[Unit]
+Description=uWSGI instance to serve brainstorming
+After=network.target
+
+[Service]
+User=git
+Group=www-data
+WorkingDirectory=/var/www/brainstorming
+Environment="PATH=/var/www/brainstorming/.env/bin"
+ExecStart=/var/www/brainstorming/.env/bin/uwsgi --ini uwsgi.ini
+restart=always
+
+[Install]
+WantedBy=multi-user.target
