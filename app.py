@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
+import configparser
 import dataclasses
 import pathlib
 import urllib.request
@@ -40,7 +41,7 @@ def process_markdown(text):
     return parts
 
 
-def download_poster(url):
+def download_pad(url):
     if not url.startswith("https://"):
         url = f"https://{url}/download"
     else:
@@ -57,15 +58,10 @@ def download_poster(url):
     return r.read().decode(charset)
 
 
-@app.route("/poster/<path:url>")
-def poster(url):
-    if ";" in url:
-        urls = url.split(";")
-    else:
-        urls = [url]
+def generate_posters(urls):
     posters = []
     for url in urls:
-        content = download_poster(url)
+        content = download_pad(url)
         title, idea, problem, data, missing, people, *rest = process_markdown(content)
         posters.append(
             PosterData(
@@ -79,3 +75,30 @@ def poster(url):
             )
         )
     return render_template("poster.html", posters=posters)
+
+
+@app.route("/poster/<path:url>")
+def poster(url):
+    if ";" in url:
+        urls = url.split(";")
+    else:
+        urls = [url]
+    return generate_posters(urls)
+
+
+def collect_urls(name):
+    event_config_file = pathlib.Path("events.ini")
+    if not event_config_file.exists():
+        abort(404)
+    event_config = configparser.ConfigParser()
+    event_config.read(event_config_file)
+    if not event_config.has_option("events", name):
+        abort(404)
+    url = event_config.get("events", name)
+    content = download_pad(url)
+    return [line[2:] for line in content.strip().splitlines() if line.startswith("- ")]
+
+
+@app.route("/event/<name>")
+def event(name):
+    return generate_posters(collect_urls(name))
