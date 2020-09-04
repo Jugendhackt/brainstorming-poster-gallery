@@ -71,7 +71,7 @@ def generate_posters(urls):
                 "".join(data),
                 "".join(missing),
                 "".join(people),
-                url,
+                url.replace("https://", ""),
             )
         )
     return render_template("poster.html", posters=posters)
