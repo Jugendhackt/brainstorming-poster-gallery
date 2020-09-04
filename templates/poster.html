@@ -9,6 +9,12 @@
             {% for poster in posters %}
             <div class="gallery-entry">
                 <div class="poster">
+                    <div class="container arrowright">
+                        <div class="box arrowright"></div>
+                    </div>
+                    <div class="container arrowdown">
+                        <div class="box arrowdown"></div>
+                    </div>
                     <div class="container title">
                         <div class="box title">
                             {{ poster.title|safe }}
@@ -38,12 +44,6 @@
                         <div class="box people">
                             {{ poster.people|safe }}
                         </div>
-                    </div>
-                    <div class="container arrowright">
-                        <div class="box arrowright"></div>
-                    </div>
-                    <div class="container arrowdown">
-                        <div class="box arrowdown"></div>
                     </div>
                 </div>
                 <small><a href="https://{{ poster.url }}">Link zum Pad</a></small>
