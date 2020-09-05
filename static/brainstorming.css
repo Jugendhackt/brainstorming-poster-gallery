@@ -1,3 +1,13 @@
+body {
+    background-color: #D1D6DA;
+    background-image: linear-gradient(#eef0f180 2px, transparent 2px),
+    linear-gradient(90deg, #EEF0F180 2px, transparent 2px),
+    linear-gradient(#DDE0E380 1px, transparent 1px),
+    linear-gradient(90deg, #DDE0E380 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
+}
+
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -18,9 +28,10 @@
     min-width: 400px;
     column-gap: 10%;
     margin: 0px auto;
-    padding: 2em;
+    padding: 0em 2.2em 1.5em 2.2em;
     box-shadow: 3px 5px 4px 2px rgb(158 158 158 / 50%);
     border-radius: .25em;
+    background:white;
 }
 .box {
     position: absolute;
