@@ -18,6 +18,9 @@
     min-width: 400px;
     column-gap: 10%;
     margin: 0px auto;
+    padding: 2em;
+    box-shadow: 3px 5px 4px 2px rgb(158 158 158 / 50%);
+    border-radius: .25em;
 }
 .box {
     position: absolute;
