@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Brainstorming Poster Generator</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='brainstorming.css') }}" type="text/css" />
+    </head>
+
+    <body>
+        <div class="landing">
+            <h1>Generate Brainstorming Poster</h1>
+            <form action="/index" method="get">
+                <input type="text" id="url" name="url" placeholder="URL to pad" />
+                <input type="submit" value="Generate" />
+            </form>
+        </div>
+
+        <footer>
+            <small>Build for <a href="jugendhackt.org">jugendhackt</a> by Hanno Sternberg.</small>
+        </footer>
+
+    </body>
+
+</html>

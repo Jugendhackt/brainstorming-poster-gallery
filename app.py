@@ -7,7 +7,7 @@ import pathlib
 import urllib.request
 
 import commonmark
-from flask import Flask, request, abort, render_template
+from flask import Flask, request, redirect, abort, render_template
 
 app = Flask("Brainstorming")
 
@@ -102,3 +102,14 @@ def collect_urls(name):
 @app.route("/event/<name>")
 def event(name):
     return generate_posters(collect_urls(name))
+
+
+@app.route("/")
+@app.route("/index")
+@app.route("/poster/")
+def index():
+    if "url" in request.args:
+        url = request.args.get("url").replace("https://", "")
+        return redirect(f"poster/{url}", code=307)
+    else:
+        return render_template("index.html")
