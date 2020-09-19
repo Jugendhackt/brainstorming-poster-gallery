@@ -42,6 +42,10 @@ body {
     font-size:.6em;
     font-family: cursive;
 }
+
+.box img {
+    width: 80%;
+}
 /*.box>div {background-color:blueviolet; display:block; width:100%; height:100%}*/
 .container {
     position: relative;
