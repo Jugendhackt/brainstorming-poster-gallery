@@ -1,3 +1,13 @@
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("fonts/open-sans-regular.woff2") format("woff2"),
+         url("fonts/open-sans-regular.woff") format("woff"),
+         url("fonts/open-sans-regular.eot") format("embedded-opentype"),
+         url("fonts/open-sans-regular.ttf") format("truetype"),
+         url("fonts/open-sans-regular.svg") format("svg");
+}
+
 body {
     background-color: #D1D6DA;
     background-image: linear-gradient(#eef0f180 2px, transparent 2px),
@@ -6,6 +16,7 @@ body {
     linear-gradient(90deg, #DDE0E380 1px, transparent 1px);
     background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
     background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    font-family: "Open Sans";
 }
 
 .gallery {
@@ -40,7 +51,6 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     font-size:.6em;
-    font-family: cursive;
 }
 
 .box img {
